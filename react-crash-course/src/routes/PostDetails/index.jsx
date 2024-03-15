@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from 'react-router-dom';
 
-import Modal from '../components/Modal';
+import Modal from '../../components/Modal';
 import classes from './PostDetails.module.css';
 
 function PostDetails() {
@@ -24,11 +24,17 @@ const post = useLoaderData();
    return (
       <Modal>
          <main className={classes.details}>
-         <p className={classes.author}>{post.author}</p>
-         <p className={classes.text}>{post.body}</p>
+            <p className={classes.author}>{post.author}</p>
+            <p className={classes.text}>{post.body}</p>
          </main>
       </Modal>
    );
    }
 
 export default PostDetails;
+
+export async function loader({params}) {
+   const response = await fetch('http://localhost:8080/posts/' + params.postId);
+   const resData = await response.json();
+   return resData.post;
+}
