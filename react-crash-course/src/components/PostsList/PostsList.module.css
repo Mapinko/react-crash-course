@@ -9,6 +9,22 @@
    justify-content: center;
 }
 
-.noPosts{
+.noPosts, .loading{
    text-align: center;
+}
+
+.loading {
+   animation: bounce 1.5s linear infinite;
+}
+
+@keyframes bounce {
+   0% {
+      transform: translateY(0);
+   }
+   50% {
+      transform: translateY(-10px);
+   }
+   100% {
+      transform: translateY(0);
+   }
 }
