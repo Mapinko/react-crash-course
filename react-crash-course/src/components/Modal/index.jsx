@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+
 import classes from './Modal.module.css';
 
 function Modal({ children }) {
@@ -10,9 +11,9 @@ function Modal({ children }) {
 
    return (
       <>
-         <div className={classes.backdrop} onClick={closeHandler}/>
+         <div className={classes.backdrop} onClick={closeHandler} />
          <dialog open className={classes.modal}>
-            {children}
+         {children}
          </dialog>
       </>
    );

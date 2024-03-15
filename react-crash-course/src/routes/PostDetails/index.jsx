@@ -4,7 +4,7 @@ import Modal from '../../components/Modal';
 import classes from './PostDetails.module.css';
 
 function PostDetails() {
-const post = useLoaderData();
+   const post = useLoaderData();
 
    if (!post) {
       return (
@@ -21,6 +21,7 @@ const post = useLoaderData();
          </Modal>
       );
    }
+
    return (
       <Modal>
          <main className={classes.details}>
