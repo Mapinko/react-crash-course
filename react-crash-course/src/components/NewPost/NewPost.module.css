@@ -9,10 +9,10 @@
    margin-bottom: 0.05rem;
    color: #eadbfb;
    font-weight: bold;
-}
-
-.form input,
-.form textarea {
+   }
+   
+   .form input,
+   .form textarea {
    display: block;
    width: 100%;
    font: inherit;
@@ -26,7 +26,6 @@
 .actions {
    display: flex;
    justify-content: flex-end;
-   align-items: center;
    gap: 0.5rem;
 }
 
@@ -44,12 +43,10 @@
    background-color: #23014a;
 }
 
-.actions a {
+.actions button[type='button'] {
    background-color: transparent;
-   text-decoration: none;
-   color: #e5d5f7;
 }
 
-.actions a:hover {
+.actions button[type='button']:hover {
    color: #d1bee6;
 }

@@ -3,18 +3,14 @@ import Modal from '../Modal';
 import NewPost from '../NewPost';
 import Post from '../Post';
 import classes from './PostsList.module.css';
+function PostsList({isPosting, onModalHandler, onStopPosting}) {
 
-function PostsList({isPosting, onModalHandler}) {
-   const [enteredBody, setEnteredBody] = useState('');
-   const [enteredAuthor, setEnteredAuthor] = useState('');
+   const [posts, setPosts] = useState([]);
 
-
-
-   function bodyChangeHandler(event) {
-      setEnteredBody(event.target.value);
-   }
-   function authorChangeHandler(event) {
-      setEnteredAuthor(event.target.value);
+   function addPostHandler(postData) {
+      setPosts((existingPosts) => {
+         return [postData, ...existingPosts];
+      });
    }
 
    let modalContent
@@ -23,8 +19,8 @@ function PostsList({isPosting, onModalHandler}) {
       modalContent = (
          <Modal onClose={onModalHandler}>
             <NewPost
-               onBodyChange={bodyChangeHandler}
-               onAuthorChange={authorChangeHandler}
+               onCancel={onModalHandler}
+               onAddPost={addPostHandler}
             />
          </Modal>
       )
@@ -35,8 +31,10 @@ function PostsList({isPosting, onModalHandler}) {
          {modalContent}
 
          <ul className={classes.posts}>
-            <Post author={enteredAuthor} body={enteredBody}/>
-         </ul>`
+            {posts.map((post, index) => (
+               <Post key={index}  author={post.author} body={post.body}/>
+            ))}
+         </ul>
       </>
    );
 }
