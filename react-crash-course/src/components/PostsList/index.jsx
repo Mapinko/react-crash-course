@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Modal from '../Modal';
 import NewPost from '../NewPost';
 import Post from '../Post';
@@ -30,11 +30,23 @@ function PostsList({isPosting, onModalHandler, onStopPosting}) {
       <>
          {modalContent}
 
-         <ul className={classes.posts}>
-            {posts.map((post, index) => (
-               <Post key={index}  author={post.author} body={post.body}/>
-            ))}
-         </ul>
+         {
+            posts.length > 0 && (
+               <ul className={classes.posts}>
+                     {posts.map((post, index) => (
+                        <Post key={index} author={post.author} body={post.body} />
+                     ))}
+               </ul>
+            ) 
+         }
+         { posts.length === 0 &&
+            (   <div className={classes.noPosts}>
+                  <h2>There are no posts yet.</h2>
+                  <p>Start adding some!</p>
+               </div>)
+         }
+            
+            )
       </>
    );
 }
